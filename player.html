@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Player — Commercial Music Streaming Web App</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- Floating Music Notes Container -->
+  <div id="floatingNotesContainer"></div>
+
+  <!-- Main App Layout -->
+  <div class="app-layout">
+
+    <!-- Left Sidebar Navigation -->
+    <aside class="app-sidebar">
+      <a href="index.html" class="brand-logo" style="margin-bottom:12px;">
+        <i class="fa-solid fa-headphones-simple"></i>
+        <span>Aurora</span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item active" id="navHome"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-item" id="navBrowse"><i class="fa-solid fa-compass"></i> Browse</a>
+        <a class="nav-item" id="navLibrary"><i class="fa-solid fa-bookmark"></i> Library</a>
+        <a class="nav-item" id="navFavorites"><i class="fa-solid fa-heart"></i> Favorites</a>
+        <a class="nav-item" id="navRecent"><i class="fa-solid fa-clock-rotate-left"></i> Recently Played</a>
+        <a class="nav-item" id="navDownloads"><i class="fa-solid fa-circle-down"></i> Downloads</a>
+      </nav>
+
+      <div class="sidebar-heading">PLAYLISTS</div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:0 16px; margin-bottom:8px;">
+        <span style="font-size:0.8rem; color:var(--text-secondary);">Your Playlists</span>
+        <button id="btnCreatePlaylist" style="background:none; border:none; color:var(--accent); cursor:pointer; font-size:1rem;" title="Create Playlist"><i class="fa-solid fa-plus"></i></button>
+      </div>
+
+      <div id="sidebarPlaylists" style="flex:1; overflow-y:auto;">
+        <!-- Dynamic user playlists rendered here -->
+      </div>
+
+      <!-- Theme Switcher Selector -->
+      <div class="sidebar-heading">THEME SELECTOR</div>
+      <div class="theme-selector" style="justify-content:center; margin-bottom:12px;">
+        <div class="theme-dot" style="background:#1DB954" title="Spotify Green" onclick="window.ThemeEngine?.applyTheme('spotify')"></div>
+        <div class="theme-dot" style="background:#3B82F6" title="Ocean Blue" onclick="window.ThemeEngine?.applyTheme('midnight')"></div>
+        <div class="theme-dot" style="background:#8B5CF6" title="Galaxy Purple" onclick="window.ThemeEngine?.applyTheme('galaxy')"></div>
+        <div class="theme-dot" style="background:#06B6D4" title="Ocean Cyan" onclick="window.ThemeEngine?.applyTheme('cyan')"></div>
+        <div class="theme-dot" style="background:#F97316" title="Sunset Orange" onclick="window.ThemeEngine?.applyTheme('sunset')"></div>
+        <div class="theme-dot" style="background:#121212" title="Midnight Black" onclick="window.ThemeEngine?.applyTheme('black')"></div>
+        <div class="theme-dot" style="background:#FFFFFF" title="Light Mode" onclick="window.ThemeEngine?.applyTheme('light')"></div>
+      </div>
+    </aside>
+
+    <!-- Main Dynamic Content Feed -->
+    <main class="app-main">
+      <!-- SPA Router dynamically injects view content here -->
+    </main>
+
+    <!-- Right Auxiliary Panel (Lyrics, Queue, Analytics) -->
+    <aside class="app-right-panel">
+      <!-- Panel Tabs -->
+      <div class="panel-tabs">
+        <button class="panel-tab-btn active" id="tabBtnLyrics">Lyrics</button>
+        <button class="panel-tab-btn" id="tabBtnQueue">Queue</button>
+        <button class="panel-tab-btn" id="tabBtnStats">Analytics</button>
+      </div>
+
+      <!-- Vinyl Disc Display Container -->
+      <div class="vinyl-container" style="margin-bottom:20px;">
+        <div class="vinyl-disc" id="vinylDisc">
+          <div class="vinyl-grooves"></div>
+          <div class="vinyl-center-label">
+            <img src="assets/images/cover1.png" id="vinylCenterImg" />
+            <div class="vinyl-center-hole"></div>
+          </div>
+        </div>
+        <div class="vinyl-needle" id="vinylNeedle">
+          <div class="vinyl-arm"></div>
+          <div class="vinyl-head"></div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Karaoke Synced Lyrics -->
+      <div id="panelLyrics" class="lyrics-container" style="flex:1;">
+        <div class="lyric-line">(Select a song to view lyrics)</div>
+      </div>
+
+      <!-- Tab Content: Up Next Queue -->
+      <div id="panelQueue" style="display:none; flex:1; overflow-y:auto;">
+        <div id="queueListContainer"></div>
+      </div>
+
+      <!-- Tab Content: Listening Analytics -->
+      <div id="panelStats" style="display:none; flex:1; overflow-y:auto;">
+        <!-- Dynamic analytics dashboard rendered here -->
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Bottom Floating Glassmorphic Player Bar -->
+  <div class="app-player-bar" id="playerBar">
+
+    <!-- Left: Track info -->
+    <div class="player-track-info">
+      <img src="assets/images/cover1.png" class="player-artwork" id="playerArtwork" />
+      <div style="min-width:0;">
+        <div class="player-meta-title" id="playerTitle">Neon Dreams</div>
+        <div class="player-meta-artist" id="playerArtist">Aurora Synth</div>
+      </div>
+    </div>
+
+    <!-- Center: Playback Controls & Progress Bar -->
+    <div class="player-center-controls">
+      <div class="player-buttons">
+        <button class="btn-ctrl" id="btnShuffle" title="Shuffle (S)"><i class="fa-solid fa-shuffle"></i></button>
+        <button class="btn-ctrl" id="btnPrev" title="Previous (Left Arrow)"><i class="fa-solid fa-backward-step"></i></button>
+        <button class="btn-ctrl btn-ctrl-play" id="btnPlay" title="Play/Pause (Space)"><i class="fa-solid fa-play" id="playIcon"></i></button>
+        <button class="btn-ctrl" id="btnNext" title="Next (Right Arrow)"><i class="fa-solid fa-forward-step"></i></button>
+        <button class="btn-ctrl" id="btnRepeat" title="Repeat Mode (R)"><i class="fa-solid fa-repeat"></i></button>
+      </div>
+
+      <div class="player-progress-row">
+        <span class="time-str" id="currentTime">0:00</span>
+        <div class="progress-track" id="progressBar">
+          <div class="progress-fill-bar" id="progressFill"></div>
+        </div>
+        <span class="time-str" id="remainingTime">-0:00</span>
+      </div>
+    </div>
+
+    <!-- Right: Visualizer, Speed, Sleep, Vinyl & Volume Controls -->
+    <div class="player-right-controls">
+      <!-- Animated Equalizer Bars -->
+      <div style="display:flex; align-items:flex-end; gap:3px; height:18px; margin-right:8px;" title="Equalizer">
+        <div class="viz-bar" style="width:3px; height:4px; background:var(--accent); border-radius:2px;"></div>
+        <div class="viz-bar" style="width:3px; height:4px; background:var(--accent); border-radius:2px;"></div>
+        <div class="viz-bar" style="width:3px; height:4px; background:var(--accent); border-radius:2px;"></div>
+        <div class="viz-bar" style="width:3px; height:4px; background:var(--accent); border-radius:2px;"></div>
+      </div>
+
+      <!-- Playback Speed -->
+      <select id="speedSelect" style="background:var(--card); color:var(--text); border:1px solid var(--card-border); border-radius:var(--radius-xs); padding:4px 8px; font-size:0.75rem; cursor:pointer;" title="Playback Speed">
+        <option value="0.5">0.5x</option>
+        <option value="1.0" selected>1.0x</option>
+        <option value="1.25">1.25x</option>
+        <option value="1.5">1.5x</option>
+        <option value="2.0">2.0x</option>
+      </select>
+
+      <button class="btn-ctrl" id="btnSleepTimer" title="Sleep Timer"><i class="fa-solid fa-bed"></i></button>
+      <button class="btn-ctrl" id="btnVinylMode" title="Vinyl Mode Toggle"><i class="fa-solid fa-compact-disc"></i></button>
+      <button class="btn-ctrl" id="btnMute" title="Mute/Unmute (M)"><i class="fa-solid fa-volume-high" id="volumeIcon"></i></button>
+
+      <input type="range" id="volumeSlider" min="0" max="100" value="80" style="width:70px; accent-color:var(--accent); cursor:pointer;" title="Volume (Up/Down Arrows)" />
+    </div>
+
+  </div>
+
+  <!-- Modular ES6 Architecture Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/playlist.js"></script>
+  <script src="js/queue.js"></script>
+  <script src="js/lyrics.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

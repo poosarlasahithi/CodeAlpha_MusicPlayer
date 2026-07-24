@@ -1,0 +1,343 @@
+/* ================================================================
+   Aurora Music Streaming Platform — Advanced Keyframes & Effects
+   ================================================================ */
+
+/* Particle & Notes Canvas */
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Music Notes Container */
+#floatingNotesContainer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Floating Music Notes Animation */
+.floating-note {
+  position: absolute;
+  color: var(--accent);
+  opacity: 0.6;
+  font-size: 1.2rem;
+  pointer-events: none;
+  animation: floatNote 8s linear infinite;
+}
+
+@keyframes floatNote {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Vinyl Disc & Needle Animation */
+.vinyl-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.vinyl-disc {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #222 20%, #111 21%, #151515 40%, #050505 70%, #000 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s var(--ease-spring);
+  animation: vinylSpin 12s linear infinite;
+  animation-play-state: paused;
+}
+
+.vinyl-disc.playing {
+  animation-play-state: running;
+}
+
+.vinyl-grooves {
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 15px rgba(255, 255, 255, 0.02), inset 0 0 0 35px rgba(255, 255, 255, 0.02);
+}
+
+.vinyl-center-label {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #111;
+  position: relative;
+  z-index: 2;
+}
+
+.vinyl-center-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vinyl-center-hole {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.vinyl-needle {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: 80px;
+  height: 100px;
+  z-index: 10;
+  transform-origin: 70px 10px;
+  transform: rotate(-35deg);
+  transition: transform 0.5s var(--ease-spring);
+  pointer-events: none;
+}
+
+.vinyl-needle.playing {
+  transform: rotate(0deg);
+}
+
+.vinyl-arm {
+  width: 6px;
+  height: 80px;
+  background: linear-gradient(to bottom, #888, #444);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 3px;
+}
+
+.vinyl-head {
+  width: 16px;
+  height: 24px;
+  background: var(--accent);
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px var(--accent-dim);
+}
+
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Skeleton Shimmer Loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.12) 37%,
+    rgba(255, 255, 255, 0.05) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeletonLoading 1.4s ease infinite;
+  border-radius: var(--radius-xs);
+}
+
+@keyframes skeletonLoading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Right-Click Context Menu */
+.context-menu {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(22, 27, 34, 0.95);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  min-width: 180px;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.15s var(--ease-ui), opacity 0.15s var(--ease-ui);
+}
+
+.context-menu.active {
+  display: block;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--text);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: background 0.2s var(--ease-ui);
+}
+
+.context-menu-item:hover {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.context-menu-item i {
+  width: 16px;
+  text-align: center;
+}
+
+/* Confetti Burst Animation */
+.confetti-particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2000;
+  animation: confettiFall 1.2s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(720deg) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Karaoke Lyrics Auto-Scroll */
+.lyrics-container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+.lyric-line {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  transition: all 0.3s var(--ease-ui);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+}
+
+.lyric-line:hover {
+  color: var(--text-secondary);
+  background: var(--card);
+}
+
+.lyric-line.active {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-dim);
+  text-shadow: 0 0 15px var(--accent-dim);
+  transform: translateX(6px);
+}
+
+/* Voice Command Overlay Badge */
+.voice-badge {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-glow);
+  z-index: 500;
+  animation: pulseVoice 1.5s infinite;
+}
+
+@keyframes pulseVoice {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px var(--accent); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px var(--accent); }
+}
+
+/* Horizontal Scroll Container Styling */
+.scroll-feed {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 10px 4px 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-feed::-webkit-scrollbar {
+  height: 4px;
+}
+
+.feed-card {
+  flex: 0 0 180px;
+  scroll-snap-align: start;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  transition: all 0.3s var(--ease-ui);
+  cursor: pointer;
+  position: relative;
+}
+
+.feed-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md), 0 0 20px var(--accent-dim);
+  border-color: var(--accent);
+}
+
+.feed-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-xs);
+  object-fit: cover;
+  margin-bottom: 10px;
+}

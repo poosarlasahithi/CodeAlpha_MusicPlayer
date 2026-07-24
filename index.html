@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Music — Commercial Music Streaming Platform</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- Floating Music Notes Container -->
+  <div id="floatingNotesContainer"></div>
+
+  <!-- Landing Navigation -->
+  <header class="landing-nav">
+    <a href="index.html" class="brand-logo">
+      <i class="fa-solid fa-headphones-simple"></i>
+      <span>Aurora</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#trending">Trending</a></li>
+      <li><a href="#charts">Top Charts</a></li>
+      <li><a href="#genres">Genres</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Theme Switcher Quick Menu -->
+      <div class="theme-selector">
+        <div class="theme-dot" style="background:#1DB954" title="Spotify Green" onclick="ThemeEngine.applyTheme('spotify')"></div>
+        <div class="theme-dot" style="background:#3B82F6" title="Midnight Blue" onclick="ThemeEngine.applyTheme('midnight')"></div>
+        <div class="theme-dot" style="background:#8B5CF6" title="Galaxy Purple" onclick="ThemeEngine.applyTheme('galaxy')"></div>
+        <div class="theme-dot" style="background:#06B6D4" title="Ocean Cyan" onclick="ThemeEngine.applyTheme('cyan')"></div>
+        <div class="theme-dot" style="background:#F97316" title="Sunset Orange" onclick="ThemeEngine.applyTheme('sunset')"></div>
+        <div class="theme-dot" style="background:#FFFFFF" title="Light Mode" onclick="ThemeEngine.applyTheme('light')"></div>
+      </div>
+
+      <button class="btn btn-ghost" onclick="alert('Login Modal UI: Welcome to Aurora Streaming!')">Log In</button>
+      <a href="player.html" class="btn btn-primary">
+        <i class="fa-solid fa-play"></i> Start Listening
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Next-Generation Streaming Experience</span>
+      </div>
+      <h1 class="hero-title">Music Beyond Boundaries. Infinite Sound.</h1>
+      <p class="hero-subtitle">
+        Stream over 50+ hand-curated tracks with ultra-crisp audio quality, synchronized karaoke lyrics, glassmorphic UI, and AI voice controls.
+      </p>
+
+      <div style="display:flex; gap:16px; justify-content:center; margin-bottom:48px;">
+        <a href="player.html" class="btn btn-primary" style="padding:14px 32px; font-size:1.05rem;">
+          <i class="fa-solid fa-rocket"></i> Launch Music App
+        </a>
+        <a href="#featured" class="btn btn-ghost" style="padding:14px 28px;">
+          Explore Collections
+        </a>
+      </div>
+
+      <!-- Featured Album Banner Card -->
+      <div style="background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:24px; display:flex; align-items:center; gap:24px; max-width:650px; margin:0 auto; text-align:left; backdrop-filter:blur(20px);">
+        <img src="assets/images/cover1.png" style="width:100px; height:100px; border-radius:var(--radius-sm); object-fit:cover;" />
+        <div>
+          <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Featured Album of the Week</span>
+          <h3 style="font-size:1.3rem; margin:4px 0;">Synthwave Journeys</h3>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">By Aurora Synth • 10 Tracks • High Fidelity Lossless</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrolling Ticker Banner -->
+  <div class="scrolling-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><i class="fa-solid fa-bolt"></i> Lossless Audio Quality</span>
+      <span class="ticker-item"><i class="fa-solid fa-microphone-lines"></i> Synced Karaoke Lyrics</span>
+      <span class="ticker-item"><i class="fa-solid fa-compact-disc"></i> Vinyl Mode Simulation</span>
+      <span class="ticker-item"><i class="fa-solid fa-palette"></i> 6 Dynamic Glassmorphic Themes</span>
+      <span class="ticker-item"><i class="fa-solid fa-sliders"></i> Web Speech Voice Controls</span>
+      <span class="ticker-item"><i class="fa-solid fa-bolt"></i> Lossless Audio Quality</span>
+      <span class="ticker-item"><i class="fa-solid fa-microphone-lines"></i> Synced Karaoke Lyrics</span>
+      <span class="ticker-item"><i class="fa-solid fa-compact-disc"></i> Vinyl Mode Simulation</span>
+      <span class="ticker-item"><i class="fa-solid fa-palette"></i> 6 Dynamic Glassmorphic Themes</span>
+    </div>
+  </div>
+
+  <!-- Featured Section -->
+  <section class="landing-section" id="featured">
+    <div class="section-header">
+      <h2 class="section-title">Trending Music</h2>
+      <a href="player.html" class="btn btn-ghost" style="font-size:0.85rem;">View All in App</a>
+    </div>
+
+    <div class="grid-4">
+      <div class="feed-card" onclick="window.location.href='player.html'">
+        <img src="assets/images/cover1.png" />
+        <div style="font-weight:600;">Neon Dreams</div>
+        <div style="font-size:0.8rem; color:var(--text-secondary);">Aurora Synth</div>
+      </div>
+
+      <div class="feed-card" onclick="window.location.href='player.html'">
+        <img src="assets/images/cover2.png" />
+        <div style="font-weight:600;">Golden Hour</div>
+        <div style="font-size:0.8rem; color:var(--text-secondary);">Sunset Waves</div>
+      </div>
+
+      <div class="feed-card" onclick="window.location.href='player.html'">
+        <img src="assets/images/cover3.png" />
+        <div style="font-weight:600;">Midnight Ocean</div>
+        <div style="font-size:0.8rem; color:var(--text-secondary);">Deep Blue</div>
+      </div>
+
+      <div class="feed-card" onclick="window.location.href='player.html'">
+        <img src="assets/images/cover4.png" />
+        <div style="font-weight:600;">Electric Pulse</div>
+        <div style="font-size:0.8rem; color:var(--text-secondary);">Circuit Breaker</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Genres Section -->
+  <section class="landing-section" id="genres">
+    <div class="section-header">
+      <h2 class="section-title">Explore Genres</h2>
+    </div>
+
+    <div class="grid-4">
+      <div style="background:linear-gradient(135deg, #1DB954, #059669); padding:24px; border-radius:var(--radius-sm); font-weight:700; font-size:1.2rem; cursor:pointer;" onclick="window.location.href='player.html'">Synthwave</div>
+      <div style="background:linear-gradient(135deg, #3B82F6, #1D4ED8); padding:24px; border-radius:var(--radius-sm); font-weight:700; font-size:1.2rem; cursor:pointer;" onclick="window.location.href='player.html'">EDM & Dance</div>
+      <div style="background:linear-gradient(135deg, #8B5CF6, #6D28D9); padding:24px; border-radius:var(--radius-sm); font-weight:700; font-size:1.2rem; cursor:pointer;" onclick="window.location.href='player.html'">Lo-Fi Beats</div>
+      <div style="background:linear-gradient(135deg, #F97316, #C2410C); padding:24px; border-radius:var(--radius-sm); font-weight:700; font-size:1.2rem; cursor:pointer;" onclick="window.location.href='player.html'">Rock & Indie</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="brand-logo" style="margin-bottom:14px; display:inline-flex;">
+          <i class="fa-solid fa-headphones-simple"></i> Aurora
+        </a>
+        <p style="font-size:0.85rem; max-width:320px;">
+          Aurora is a commercial-grade recruiter demonstration streaming platform showcasing production HTML5, CSS3, and ES6 JavaScript.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="color:var(--text); margin-bottom:14px;">Platform</h4>
+        <p><a href="player.html" style="color:inherit; text-decoration:none;">Web Player</a></p>
+        <p><a href="#genres" style="color:inherit; text-decoration:none;">Genres</a></p>
+        <p><a href="#featured" style="color:inherit; text-decoration:none;">Top Charts</a></p>
+      </div>
+
+      <div>
+        <h4 style="color:var(--text); margin-bottom:14px;">Features</h4>
+        <p>Voice Commands</p>
+        <p>Vinyl Disc Mode</p>
+        <p>Synced Karaoke Lyrics</p>
+      </div>
+
+      <div>
+        <h4 style="color:var(--text); margin-bottom:14px;">Theme Switcher</h4>
+        <p onclick="ThemeEngine.applyTheme('spotify')" style="cursor:pointer;">Spotify Green</p>
+        <p onclick="ThemeEngine.applyTheme('galaxy')" style="cursor:pointer;">Galaxy Purple</p>
+        <p onclick="ThemeEngine.applyTheme('cyan')" style="cursor:pointer;">Ocean Cyan</p>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--glass-border); padding-top:20px; text-align:center; font-size:0.8rem;">
+      © 2026 Aurora Music Streaming Platform. All rights reserved. Hand-crafted with pure HTML, CSS, and Vanilla JS.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
