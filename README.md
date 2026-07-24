@@ -195,13 +195,26 @@ npx http-server . -p 8080
 - **Web APIs**: Web Speech API, HTML5 Audio API, LocalStorage API.
 
 ---
+## 📄 License
+
+This project was developed as part of the CodeAlpha Frontend Development Internship for educational purposes.
+
+## 🌐 Live Demo 
+
+🚀 Try the App: vercel: https://code-alpha-music-player-rouge.vercel.app/
+
+## 📂 GitHub Repository
+ https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer
+
+ ---
 
 ## 👤 Author & Acknowledgments
 
 Developed with ❤️ by **Poosarla Sahithi** for the **CodeAlpha Frontend Development Internship**.
 
-- GitHub: [@poosarlasahithi](https://github.com/poosarlasahithi)
-- Project Repository: [CodeAlpha_MusicPlayer](https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer)
+- GitHub: https://github.com/poosarlasahithi
+- LinkedIn: www.linkedin.com/in/sahithi-poosarla-48667a371
+
 
 ---
-*License: [MIT License](LICENSE)*
+
