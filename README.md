@@ -198,7 +198,7 @@ npx http-server . -p 8080
 
 ## 👤 Author & Acknowledgments
 
-Developed with ❤️ by **Sahithi Poosarla** for the **CodeAlpha Web Development Internship**.
+Developed with ❤️ by **Poosarla Sahithi** for the **CodeAlpha Frontend Development Internship**.
 
 - GitHub: [@poosarlasahithi](https://github.com/poosarlasahithi)
 - Project Repository: [CodeAlpha_MusicPlayer](https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer)
