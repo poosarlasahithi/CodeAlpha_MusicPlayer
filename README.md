@@ -16,45 +16,12 @@ A feature-rich, high-performance, commercial-grade Music Player & Streaming Appl
 ### 1. Landing Page Dashboard (`index.html`)
 > Modern marketing & landing interface with interactive hero section, feature ticker, genre discovery grid, and theme customization preview.
 
-```
-+-----------------------------------------------------------------------------------+
-|  🎧 Aurora          Featured  Trending  Top Charts  Genres     [🟢 Theme] [Log In]  |
-|                                                                                   |
-|                   ✨ Next-Generation Streaming Experience                          |
-|             Music Beyond Boundaries. Infinite Sound.                              |
-|   Stream 50+ hand-curated tracks with ultra-crisp audio, synced lyrics, & AI voice |
-|                                                                                   |
-|                [🚀 Launch Music App]      [Explore Collections]                  |
-|                                                                                   |
-|  +-----------------------------------------------------------------------------+  |
-|  | [Album Cover]  FEATURED ALBUM OF THE WEEK: Synthwave Journeys               |  |
-|  |                By Aurora Synth • 10 Tracks • High Fidelity Lossless        |  |
-|  +-----------------------------------------------------------------------------+  |
-|                                                                                   |
-|  [⚡ Lossless Quality] --- [🎤 Synced Lyrics] --- [🎨 6 Glassmorphic Themes]       |
-+-----------------------------------------------------------------------------------+
-```
+![Aurora Landing Page Dashboard](assets/images/landing_preview.png)
 
 ### 2. Full-Screen Interactive Music Player (`player.html`)
 > Glassmorphic Single Page Application featuring audio controls, vinyl disc simulation, live synced lyrics, custom queue, favorites, and real-time analytics.
 
-```
-+-----------------------------------------------------------------------------------+
-|  AURORA        |  🔍 Search title, artist, genre...       [🎤 Voice] [🔴 Live]    |
-+----------------+------------------------------------------------------------------+
-|  🏠 Home       |  WELCOME BACK                                                    |
-|  🧭 Browse     |  +-----------------------+  +----------------------------------+ |
-|  🔖 Library    |  | Featured Playlist     |  | Trending Track List              | |
-|  ❤️ Favorites  |  | "Synthwave Journeys"  |  | 1. Neon Dreams - 6:14            | |
-|  🕒 Recent     |  +-----------------------+  | 2. Golden Hour - 5:46            | |
-|                |                             | 3. Midnight Ocean - 7:08         | |
-|  PLAYLISTS     |  GENRE EXPLORER             +----------------------------------+ |
-|  + Chill Mix   |  [Synthwave] [Lo-Fi] [EDM] [Rock] [Ambient]                      |
-|  + Workout     |                                                                  |
-+----------------+------------------------------------------------------------------+
-| [Cover] Song Title - Artist  |  [⏮] [⏯] [⏭] [🔀] [🔁]  01:45 [========--] 06:14   |
-+-----------------------------------------------------------------------------------+
-```
+![Aurora Music Player Interface](assets/images/player_preview.png)
 
 ---
 
