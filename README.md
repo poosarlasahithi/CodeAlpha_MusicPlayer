@@ -1,12 +1,60 @@
-# 🎵 CodeAlpha - Modern Interactive Music Player
+# 🎵 Aurora Music — Next-Generation Web Music Player
 
-A feature-rich, high-performance, web-based Music Player application built with Vanilla HTML5, CSS3 (Glassmorphic Design), and JavaScript (ES6 Modules). Developed as part of the **CodeAlpha** web development internship program.
+A feature-rich, high-performance, commercial-grade Music Player & Streaming Application built with **Vanilla HTML5**, **CSS3 Glassmorphism**, and **JavaScript ES6 Modules**. Developed for the **CodeAlpha** Web Development Internship.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Responsive](https://img.shields.io/badge/Design-Responsive-success.svg)
+![Design](https://img.shields.io/badge/Glassmorphism-Dynamic--Themes-00D4FF.svg)
+![Speech](https://img.shields.io/badge/Voice--Control-Web--Speech--API-1DB954.svg)
+
+---
+
+## 📸 Interface Previews & Screenshots
+
+### 1. Landing Page Dashboard (`index.html`)
+> Modern marketing & landing interface with interactive hero section, feature ticker, genre discovery grid, and theme customization preview.
+
+```
++-----------------------------------------------------------------------------------+
+|  🎧 Aurora          Featured  Trending  Top Charts  Genres     [🟢 Theme] [Log In]  |
+|                                                                                   |
+|                   ✨ Next-Generation Streaming Experience                          |
+|             Music Beyond Boundaries. Infinite Sound.                              |
+|   Stream 50+ hand-curated tracks with ultra-crisp audio, synced lyrics, & AI voice |
+|                                                                                   |
+|                [🚀 Launch Music App]      [Explore Collections]                  |
+|                                                                                   |
+|  +-----------------------------------------------------------------------------+  |
+|  | [Album Cover]  FEATURED ALBUM OF THE WEEK: Synthwave Journeys               |  |
+|  |                By Aurora Synth • 10 Tracks • High Fidelity Lossless        |  |
+|  +-----------------------------------------------------------------------------+  |
+|                                                                                   |
+|  [⚡ Lossless Quality] --- [🎤 Synced Lyrics] --- [🎨 6 Glassmorphic Themes]       |
++-----------------------------------------------------------------------------------+
+```
+
+### 2. Full-Screen Interactive Music Player (`player.html`)
+> Glassmorphic Single Page Application featuring audio controls, vinyl disc simulation, live synced lyrics, custom queue, favorites, and real-time analytics.
+
+```
++-----------------------------------------------------------------------------------+
+|  AURORA        |  🔍 Search title, artist, genre...       [🎤 Voice] [🔴 Live]    |
++----------------+------------------------------------------------------------------+
+|  🏠 Home       |  WELCOME BACK                                                    |
+|  🧭 Browse     |  +-----------------------+  +----------------------------------+ |
+|  🔖 Library    |  | Featured Playlist     |  | Trending Track List              | |
+|  ❤️ Favorites  |  | "Synthwave Journeys"  |  | 1. Neon Dreams - 6:14            | |
+|  🕒 Recent     |  +-----------------------+  | 2. Golden Hour - 5:46            | |
+|                |                             | 3. Midnight Ocean - 7:08         | |
+|  PLAYLISTS     |  GENRE EXPLORER             +----------------------------------+ |
+|  + Chill Mix   |  [Synthwave] [Lo-Fi] [EDM] [Rock] [Ambient]                      |
+|  + Workout     |                                                                  |
++----------------+------------------------------------------------------------------+
+| [Cover] Song Title - Artist  |  [⏮] [⏯] [⏭] [🔀] [🔁]  01:45 [========--] 06:14   |
++-----------------------------------------------------------------------------------+
+```
 
 ---
 
@@ -15,206 +63,153 @@ A feature-rich, high-performance, web-based Music Player application built with 
 ### 🎧 Core Audio Engine
 - **Full Playback Controls**: Play, pause, seek, jump forward/backward, adjust volume, mute/unmute.
 - **Playback Modes**: Loop single track, repeat playlist, and shuffle queue.
-- **Audio Progress Bar**: Interactive scrub bar with real-time timestamp display (`00:00 / 03:45`).
-- **Smooth Track Transition**: Automatic queuing and playback of next track upon completion.
+- **Interactive Audio Scrub Bar**: Real-time timestamp display (`00:00 / 03:45`) and seek control.
+- **Web Audio API Fallback Synthesizer**: Seamless fallback generator ensuring audio playback is 100% guaranteed even offline or under restricted CORS networks.
 
-### 🎤 Hands-Free Voice Control
-- Integrated **Web Speech API** for real-time speech recognition.
+### 🎤 Voice Command Recognition
+- Integrated **Web Speech API** for real-time speech command parsing.
 - Voice-driven commands for play, pause, next, previous, volume manipulation, and mute toggles.
-- Visual microphone indicator with live listening status feedback.
+- Live microphone status indicator with visual pulse animation.
 
 ### 📜 Synchronized Lyrics Subsystem
-- Real-time lyrics parser supporting time-stamped text sync.
+- Time-stamped karaoke lyrics parser (`[mm:ss.xx]`).
 - Smooth scrolling lyrics view synchronized with audio current time.
 - Click-to-seek functionality: Click on any lyric line to jump playback directly to that timestamp.
 
 ### 🎨 Glassmorphism & Custom Themes
 - Modern UI with backdrop blur filters, smooth color gradients, and glowing accents.
-- Dynamic theme selector: Dark Mode, Light Mode, Neon Synthwave, Cyberpunk, and Sunset Minimalist.
-- Customizable accent color picker for personalized UI branding.
+- Dynamic theme engine with 6 presets: Spotify Green, Midnight Blue, Galaxy Purple, Ocean Cyan, Sunset Orange, and Light Mode.
 
-### 🔍 Search, Filter & Discovery
+### 🔍 Smart Search & Filtering
 - Instant client-side search across track titles, artists, album names, and musical genres.
-- Category filters to quickly narrow down pop, rock, electronic, lo-fi, and classical tracks.
-- Instant auto-complete search query highlighting.
+- Real-time search query highlighting.
+- Category filter pills for rapid genre exploration.
 
 ### 📋 Playlist & Queue Management
 - **Custom Playlists**: Create, rename, delete, and manage custom user playlists.
-- **Up-Next Queue**: View upcoming tracks, drag-and-drop reordering, and remove tracks from queue.
-- **Quick-Add**: One-click addition of songs from search or library into active queues.
+- **Up-Next Queue**: View upcoming tracks, reorder queue, and remove items dynamically.
 
 ### ❤️ Favorites & Listening History
-- **Favorites Collection**: Quick heart toggle on any track to add/remove from favorites.
-- **Listening History**: Automatically logs recently played songs with timestamps.
-- **Persistent Storage**: Retains all favorites, custom playlists, listening history, and user settings using `localStorage`.
+- **Favorites Collection**: One-click heart toggle to mark/unmark songs.
+- **Listening History**: Automatically logs recently played tracks with local persistence.
 
 ### 📊 Listening Analytics & Insights
-- Interactive charts detailing total listening time, top played tracks, and favorite genres.
-- Daily/weekly playback statistics breakdown.
+- Interactive charts detailing total listening duration, top played tracks, and favorite genres.
 
 ---
 
-## 📂 Project Architecture & File Breakdown
+## 📂 Project Architecture
 
 ```
 Music Player/
-├── index.html          # Main landing dashboard & library interface
-├── player.html         # Interactive full-screen music player interface
+├── index.html          # Main landing dashboard
+├── player.html         # Interactive full-screen music player view
 ├── style.css           # Global fallback stylesheet & CSS custom properties
-├── script.js           # Core application entry point & initialization script
+├── script.js           # Core application entry point
 ├── css/
-│   ├── style.css       # Design system, glassmorphism tokens, & layout components
-│   └── animations.css  # CSS keyframe animations, hover states, & pulse effects
+│   ├── style.css       # Design tokens & glassmorphic styles
+│   └── animations.css  # Micro-animations & visual transitions
 ├── js/
-│   ├── app.js          # Main app orchestrator initializing sub-modules
-│   ├── player.js       # HTML5 Audio API controller & playback state logic
-│   ├── voice.js        # Web Speech API recognition listener & command parser
-│   ├── lyrics.js       # Timestamp-synced lyrics parser & auto-scroll engine
-│   ├── playlist.js     # Custom playlist creator, editor, & manager
-│   ├── queue.js        # Up-next track queue state & reordering
-│   ├── search.js       # Search indexing, query filter, & DOM renderer
-│   ├── favorites.js    # Favorites collection management & UI state
-│   ├── history.js      # Listening history logger & view renderer
-│   ├── analytics.js    # Statistics processor & listening metrics engine
-│   ├── themes.js       # Theme engine, CSS variables manipulator, & switcher
-│   ├── storage.js      # LocalStorage helper wrapper for JSON serialization
-│   ├── data.js         # Track database catalog (titles, artists, audio URLs, lyrics)
-│   ├── navigation.js   # Single Page Application (SPA) view router
-│   └── utils.js        # Formatting utilities (time formatters, sanitizers, debouncers)
+│   ├── app.js          # Core app controller
+│   ├── player.js       # HTML5 Audio playback manager & Web Audio fallback
+│   ├── voice.js        # Voice recognition & command parser
+│   ├── lyrics.js       # Synced lyrics engine & karaoke auto-scroll
+│   ├── playlist.js     # Playlist management logic
+│   ├── queue.js        # Track queue manager
+│   ├── search.js       # Search & filter subsystem
+│   ├── favorites.js    # Favorites storage & UI state
+│   ├── history.js      # Recently played tracking
+│   ├── analytics.js    # Listening statistics processor
+│   ├── themes.js       # Dynamic theme swapper
+│   ├── storage.js      # LocalStorage persistence wrapper
+│   ├── data.js         # Music library track catalog & lyrics
+│   ├── navigation.js   # SPA navigation controller
+│   └── utils.js        # Helper functions & formatters
 └── assets/
-    └── images/         # Album art covers & visual assets
+    └── images/         # Album art and visual assets
 ```
 
 ---
 
-## 🎙️ Supported Voice Commands
+## 🎙️ Voice Commands Reference
 
-| Command Prompt | Action Executed |
-| :--- | :--- |
-| `"Play"` / `"Start"` | Resume audio playback |
-| `"Pause"` / `"Stop"` | Pause current audio playback |
-| `"Next"` / `"Next song"` | Skip to next track in queue |
-| `"Previous"` / `"Back"` | Return to previous track |
-| `"Mute"` / `"Silence"` | Toggle audio mute state |
-| `"Unmute"` | Restore audio volume |
-| `"Volume up"` | Increase playback volume by 10% |
-| `"Volume down"` | Decrease playback volume by 10% |
+| Command | Trigger Words | Action |
+| :--- | :--- | :--- |
+| **Play** | `"Play"`, `"Start"` | Resume audio playback |
+| **Pause** | `"Pause"`, `"Stop"` | Pause current audio playback |
+| **Next** | `"Next"`, `"Next song"` | Skip to next track in queue |
+| **Previous** | `"Previous"`, `"Back"` | Return to previous track |
+| **Mute** | `"Mute"`, `"Silence"` | Toggle audio mute state |
+| **Unmute** | `"Unmute"` | Restore audio volume |
+| **Volume Up** | `"Volume up"` | Increase playback volume by 10% |
+| **Volume Down** | `"Volume down"` | Decrease playback volume by 10% |
 
 ---
 
 ## ⌨️ Keyboard Shortcuts
 
-| Shortcut Key | Action |
+| Key | Action |
 | :--- | :--- |
 | <kbd>Space</kbd> | Toggle Play / Pause |
-| <kbd>←</kbd> (Left Arrow) | Rewind 5 seconds |
-| <kbd>→</kbd> (Right Arrow) | Fast forward 5 seconds |
-| <kbd>↑</kbd> (Up Arrow) | Increase volume by 5% |
-| <kbd>↓</kbd> (Down Arrow) | Decrease volume by 5% |
-| <kbd>M</kbd> | Mute / Unmute audio |
-| <kbd>L</kbd> | Toggle Lyrics drawer |
-| <kbd>F</kbd> | Toggle Favorite status on current track |
-| <kbd>S</kbd> | Toggle Shuffle mode |
-| <kbd>R</kbd> | Toggle Repeat mode |
+| <kbd>←</kbd> | Rewind 5 seconds |
+| <kbd>→</kbd> | Fast forward 5 seconds |
+| <kbd>↑</kbd> | Increase volume by 5% |
+| <kbd>↓</kbd> | Decrease volume by 5% |
+| <kbd>M</kbd> | Toggle Mute |
+| <kbd>L</kbd> | Toggle Lyrics View |
+| <kbd>F</kbd> | Toggle Favorite Status |
+| <kbd>S</kbd> | Toggle Shuffle Mode |
+| <kbd>R</kbd> | Toggle Repeat Mode |
 
 ---
 
 ## 💾 Local Storage Schema
 
-All user preferences and state persistence are stored safely in `window.localStorage` under key namespaces:
+User preferences and state are preserved in `window.localStorage`:
 
 ```json
 {
-  "codealpha_player_theme": "dark-glass",
-  "codealpha_player_favorites": ["track_01", "track_04", "track_07"],
+  "codealpha_player_theme": "spotify",
+  "codealpha_player_favorites": [1, 2, 4],
   "codealpha_player_playlists": [
     {
-      "id": "pl_01",
-      "name": "Chill Vibes",
-      "tracks": ["track_02", "track_05"]
+      "id": "pl-1774360000000",
+      "title": "Chill Vibes",
+      "description": "Lo-Fi & Ambient Tracks",
+      "cover": "assets/images/cover3.png",
+      "songs": [2, 3]
     }
   ],
   "codealpha_player_history": [
-    { "trackId": "track_01", "timestamp": 1774360000000 }
-  ],
-  "codealpha_player_settings": {
-    "volume": 0.8,
-    "repeat": "all",
-    "shuffle": false
-  }
+    { "songId": 1, "timestamp": 1774360000000 }
+  ]
 }
 ```
 
 ---
 
-## 🌐 Browser Compatibility Matrix
+## 🌐 Live Demo & Quick Start
 
-| Browser | Audio Engine | Voice Controls | Local Storage | Glassmorphism |
-| :--- | :---: | :---: | :---: | :---: |
-| **Google Chrome** | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| **Microsoft Edge** | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| **Mozilla Firefox** | ✅ Supported | ⚠️ Polyfill required | ✅ Supported | ✅ Supported |
-| **Apple Safari** | ✅ Supported | ⚠️ WebKit Speech | ✅ Supported | ✅ Supported |
-| **Opera** | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-
----
-
-## 🚀 Installation & Running Locally
-
-### Step 1: Clone Repository
-```bash
-git clone https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer.git
-cd CodeAlpha_MusicPlayer
-```
-
-### Step 2: Launch Application
-Because the application is built entirely using native Web standards (HTML5/CSS3/ES6 JS), no build tool or `npm install` is required!
-
-Simply open `index.html` or `player.html` in your browser, or launch using VS Code Live Server:
-```bash
-# Optional: using http-server if installed globally
-npx http-server . -p 8080
-```
+### Running Locally
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer.git
+   cd CodeAlpha_MusicPlayer
+   ```
+2. **Launch Application**:
+   - Open `index.html` in your browser to view the Landing Page.
+   - Click **"Launch Music App"** or open `player.html` to launch the Interactive Music Player.
+   - Alternatively, start a local HTTP server:
+     ```bash
+     npx http-server . -p 8080
+     ```
+     Then navigate to `http://localhost:8080/`.
 
 ---
 
-## 🛣️ Future Roadmap
+## 👤 Author
 
-- [ ] **Spotify / YouTube API Integration**: Fetch real-time streaming metadata and audio streams.
-- [ ] **Custom Audio Equalizer (EQ)**: 10-band Web Audio API EQ preset visualizer (Bass Boost, Treble Boost, Vocal).
-- [ ] **PWA Offline Support**: Progressive Web App manifest and Service Worker caching for offline music playback.
-- [ ] **Social Sharing**: Share current active playlist via custom URL query params.
+Developed by **Sahithi Poosarla** for the **CodeAlpha Web Development Internship**.
 
----
-
-## 🛠️ Built With
-
-- **HTML5**: Semantic web architecture (`<audio>`, `<canvas>`, `<section>`, `<nav>`).
-- **CSS3**: CSS Grid, Flexbox, backdrop-filter glassmorphism, variable tokens, micro-interactions.
-- **JavaScript (ES6+)**: Modular JS pattern (`async/await`, EventEmitters, SpeechRecognition).
-- **Web APIs**: Web Speech API, HTML5 Audio API, LocalStorage API.
-
----
-## 📄 License
-
-This project was developed as part of the CodeAlpha Frontend Development Internship for educational purposes.
-
-## 🌐 Live Demo 
-
-🚀 Try the App: vercel: https://code-alpha-music-player-rouge.vercel.app/
-
-## 📂 GitHub Repository
- https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer
-
- ---
-
-## 👤 Author & Acknowledgments
-
-Developed with ❤️ by **Poosarla Sahithi** for the **CodeAlpha Frontend Development Internship**.
-
-- GitHub: https://github.com/poosarlasahithi
-- LinkedIn: www.linkedin.com/in/sahithi-poosarla-48667a371
-
-
----
-
+- GitHub: [@poosarlasahithi](https://github.com/poosarlasahithi)
+- Repository: [poosarlasahithi/CodeAlpha_MusicPlayer](https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer.git)

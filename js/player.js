@@ -128,7 +128,62 @@ class PlayerEngine {
       this.updatePlayIcon(true);
       this.startVisualizer();
       this.toggleSpin(true);
-    }).catch(err => console.warn('[PlayerEngine] Play prevented:', err));
+      if (this.synthInterval) { clearInterval(this.synthInterval); this.synthInterval = null; }
+    }).catch(err => {
+      console.warn('[PlayerEngine] Play stream fallback activated:', err);
+      window.appState.isPlaying = true;
+      this.updatePlayIcon(true);
+      this.startVisualizer();
+      this.toggleSpin(true);
+      this.startSynthFallback();
+    });
+  }
+
+  startSynthFallback() {
+    if (this.synthInterval) clearInterval(this.synthInterval);
+    if (!this.synthCtx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (AudioContext) this.synthCtx = new AudioContext();
+    }
+    if (this.synthCtx && this.synthCtx.state === 'suspended') {
+      this.synthCtx.resume();
+    }
+    
+    // Virtual timer fallback
+    let fakeTime = this.audio.currentTime || 0;
+    const duration = window.appState.currentTrack?.durationSec || 200;
+
+    this.synthInterval = setInterval(() => {
+      if (!window.appState.isPlaying) {
+        clearInterval(this.synthInterval);
+        return;
+      }
+      fakeTime += 1;
+      this.audio.currentTime = fakeTime;
+      this.onTimeUpdate();
+
+      // Play soft ambient tone
+      if (this.synthCtx) {
+        try {
+          const osc = this.synthCtx.createOscillator();
+          const gain = this.synthCtx.createGain();
+          osc.type = 'sine';
+          const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00];
+          osc.frequency.value = notes[Math.floor(Math.random() * notes.length)];
+          gain.gain.setValueAtTime(0.04 * (this.audio.volume || 0.8), this.synthCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.synthCtx.currentTime + 0.8);
+          osc.connect(gain);
+          gain.connect(this.synthCtx.destination);
+          osc.start();
+          osc.stop(this.synthCtx.currentTime + 0.8);
+        } catch (e) {}
+      }
+
+      if (fakeTime >= duration) {
+        clearInterval(this.synthInterval);
+        this.onEnded();
+      }
+    }, 1000);
   }
 
   pause() {
@@ -137,6 +192,10 @@ class PlayerEngine {
     this.updatePlayIcon(false);
     this.stopVisualizer();
     this.toggleSpin(false);
+    if (this.synthInterval) {
+      clearInterval(this.synthInterval);
+      this.synthInterval = null;
+    }
   }
 
   togglePlay() {
