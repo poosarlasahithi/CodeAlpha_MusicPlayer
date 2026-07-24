@@ -155,28 +155,20 @@ User preferences and state are preserved in `window.localStorage`:
 
 ---
 
-## 🌐 Live Demo & Quick Start
+## 🌐 Live Demo 
 
-### Running Locally
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer.git
-   cd CodeAlpha_MusicPlayer
-   ```
-2. **Launch Application**:
-   - Open `index.html` in your browser to view the Landing Page.
-   - Click **"Launch Music App"** or open `player.html` to launch the Interactive Music Player.
-   - Alternatively, start a local HTTP server:
-     ```bash
-     npx http-server . -p 8080
-     ```
-     Then navigate to `http://localhost:8080/`.
+🚀 Try the App: vercel: https://code-alpha-music-player-rouge.vercel.app/
 
+## 📂 GitHub Repository
+https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer.git
+ 
 ---
+
 
 ## 👤 Author
 
-Developed by **Sahithi Poosarla** for the **CodeAlpha Web Development Internship**.
+Developed by **Poosarla Sahithi** for the **CodeAlpha Frontend Development Internship**.
 
-- GitHub: [@poosarlasahithi](https://github.com/poosarlasahithi)
-- Repository: [poosarlasahithi/CodeAlpha_MusicPlayer](https://github.com/poosarlasahithi/CodeAlpha_MusicPlayer.git)
+GitHub: https://github.com/poosarlasahithi
+LinkedIn: www.linkedin.com/in/sahithi-poosarla-48667a371
+
